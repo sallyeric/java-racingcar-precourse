@@ -4,9 +4,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class MoveCarTest {
     private Car car;
+    private Distance distance;
 
     @BeforeEach
     void setUp() {
@@ -33,12 +35,20 @@ public class MoveCarTest {
 
     @Test
     void 랜덤_숫자_10일때_에러발생() {
-
+        int distance = 10;
+        assertThatThrownBy(()->{
+            car.move(distance);
+        }).isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(DISTANCE_OUT_OF_RANGE);
     }
 
     @Test
     void 랜덤_숫자_음수일때_에러발생() {
-
+        int distance = -1;
+        assertThatThrownBy(()->{
+            car.move(distance);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(DISTANCE_OUT_OF_RANGE);
     }
 
     @Test
