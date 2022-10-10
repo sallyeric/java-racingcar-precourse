@@ -18,10 +18,14 @@ public class GameController {
     public void play() {
         cars = createCars();
         tryNumber = getTryNumber();
-        randomDistances = makeRandomDistances(cars.getNumberOfCars());
-        cars.moveCars(randomDistances);
+        int raceCount = 0;
         OutputView.printExecutionResultInstruction();
-        OutputView.printExecutionResult(cars);
+        while(raceCount < tryNumber) {
+            randomDistances = makeRandomDistances(cars.getNumberOfCars());
+            cars.moveCars(randomDistances);
+            OutputView.printExecutionResult(cars);
+            raceCount += 1;
+        }
     }
 
     private List<Integer> makeRandomDistances(int numberOfCars) {
