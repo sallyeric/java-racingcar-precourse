@@ -43,11 +43,19 @@ public class MoveCarTest {
 
     @Test
     void 랜덤_숫자_3일때_중지() {
-
+        int distance = 3;
+        int originalPosition = car.getPosition();
+        car.move(distance);
+        int movedPosition = car.getPosition();
+        assertThat(movedPosition).isEqualTo(originalPosition);
     }
 
     @Test
     void 랜덤_숫자_0일때_중지() {
-
+        int distance = 0;
+        int originalPosition = car.getPosition();
+        car.move(distance);
+        int movedPosition = car.getPosition();
+        assertThat(movedPosition).isEqualTo(originalPosition);
     }
 }
