@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static racingcar.domain.constants.ErrorConst.DISTANCE_OUT_OF_RANGE;
 
 public class MoveCarTest {
     private Car car;
-    private Distance distance;
 
     @BeforeEach
     void setUp() {
