@@ -11,13 +11,21 @@ import java.util.List;
 public class GameController {
     private Cars cars;
     private int tryNumber;
-    private int randomDistance;
+    private List<Integer> randomDistances;
 
     public void play() {
         cars = createCars();
         tryNumber = getTryNumber();
-        randomDistance = Randoms.pickNumberInRange(0,9);
+        randomDistances = makeRandomDistances(cars.getNumberOfCars());
+        cars.moveCars(randomDistances);
+    }
 
+    private List<Integer> makeRandomDistances(int numberOfCars) {
+        List<Integer> randomDistances = new ArrayList<>();
+        for(int i=0; i<numberOfCars; i++){
+            randomDistances.add(Randoms.pickNumberInRange(0,9));
+        }
+        return randomDistances;
     }
 
     private int getTryNumber() {
