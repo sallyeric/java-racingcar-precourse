@@ -13,6 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class MoveCarsTest {
     private Cars cars;
+    private List<Integer> distances;
 
     @BeforeEach
     void setUp() {
@@ -23,6 +24,7 @@ public class MoveCarsTest {
                         new Car("jin")
                 )
         );
+        distances = Arrays.asList(2,4,5);
     }
 
     @Test
@@ -31,10 +33,11 @@ public class MoveCarsTest {
         for(Car car: cars.getCars()) {
             originalPositions.add(car.getPosition());
         }
-        Cars.moveCars();
+        cars.moveCars(distances);
         int index = 0;
+        List<Integer> expectedPositions = Arrays.asList(0,4,5);
         for(Car car: cars.getCars()) {
-            assertThat(car.getPosition()).isEqualTo(originalPositions.get(index));
+            assertThat(car.getPosition()).isEqualTo(expectedPositions.get(index));
             index+=1;
         }
     }
