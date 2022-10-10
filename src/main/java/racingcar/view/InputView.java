@@ -10,11 +10,11 @@ public class InputView {
     public static String[] requestCarNames() {
         System.out.println(REQUEST_CAR_NAMES);
         String[] carNames = Console.readLine().split(INPUT_SEPARATOR);
-        validateInput(carNames);
+        validateCarNames(carNames);
         return carNames;
     }
 
-    private static void validateInput(String[] carNames) {
+    private static void validateCarNames(String[] carNames) {
         if(InputValidator.isEmpty(carNames)) {
             throw new IllegalArgumentException(CAR_NAMES_EMPTY);
         }
@@ -25,4 +25,10 @@ public class InputView {
             throw new IllegalArgumentException(CAR_NAMES_INVALID_LENGTH);
         }
     }
+
+//    public static int requestTryNumber() {
+//        System.out.println(REQUEST_TRY_NUMBER);
+//        int tryNumber = Integer.parseInt(Console.readLine());
+//        validate
+//    }
 }
