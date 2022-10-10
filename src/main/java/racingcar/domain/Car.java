@@ -13,6 +13,7 @@ public class Car {
     }
 
     public void move(int distance) {
-        this.position += distance;
+        if(distance >= 4)
+            this.position += distance;
     }
 }
