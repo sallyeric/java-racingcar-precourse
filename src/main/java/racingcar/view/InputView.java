@@ -8,10 +8,17 @@ import static racingcar.domain.constants.InputConst.*;
 
 public class InputView {
     public static String[] requestCarNames() {
-        System.out.println(REQUEST_CAR_NAMES);
-        String[] carNames = Console.readLine().split(INPUT_SEPARATOR);
-        validateCarNames(carNames);
-        return carNames;
+        while(true) {
+            System.out.println(REQUEST_CAR_NAMES);
+            String[] carNames = Console.readLine().split(INPUT_SEPARATOR);
+            try{
+                validateCarNames(carNames);
+            } catch (IllegalArgumentException e) {
+                System.out.println(CAR_NAMES_ERROR);
+                continue;
+            }
+            return carNames;
+        }
     }
 
     private static void validateCarNames(String[] carNames) {
@@ -27,10 +34,17 @@ public class InputView {
     }
 
     public static int requestTryNumber() {
-        System.out.println(REQUEST_TRY_NUMBER);
-        String input = Console.readLine();
-        validateTryNumber(input);
-        return Integer.parseInt(input);
+        while(true) {
+            System.out.println(REQUEST_TRY_NUMBER);
+            String input = Console.readLine();
+            try {
+                validateTryNumber(input);
+            } catch (IllegalArgumentException e) {
+                System.out.println(TRY_NUMBER_ERROR);
+                continue;
+            }
+            return Integer.parseInt(input);
+        }
     }
 
     private static void validateTryNumber(String tryNumber) {
