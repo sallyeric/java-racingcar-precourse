@@ -14,6 +14,10 @@ public class Car {
         return this.position;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public void move(int distance) {
         if(distance < 0 || distance >= 10)
             throw new IllegalArgumentException(DISTANCE_OUT_OF_RANGE);

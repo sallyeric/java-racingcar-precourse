@@ -4,8 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GameController {
@@ -18,6 +20,8 @@ public class GameController {
         tryNumber = getTryNumber();
         randomDistances = makeRandomDistances(cars.getNumberOfCars());
         cars.moveCars(randomDistances);
+        OutputView.printExecutionResultInstruction();
+        OutputView.printExecutionResult(cars);
     }
 
     private List<Integer> makeRandomDistances(int numberOfCars) {
