@@ -20,5 +20,6 @@ public class OutputView {
             }
             System.out.println(racedCar);
         }
+        System.out.println();
     }
 }
