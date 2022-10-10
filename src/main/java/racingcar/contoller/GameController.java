@@ -7,7 +7,6 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class GameController {
@@ -26,6 +25,8 @@ public class GameController {
             OutputView.printExecutionResult(cars);
             raceCount += 1;
         }
+        List<Car> winners = getWinners(cars);
+        OutputView.printFinalWinners(winners);
     }
 
     private List<Integer> makeRandomDistances(int numberOfCars) {
@@ -47,5 +48,19 @@ public class GameController {
             cars.add(new Car(carName));
         }
         return new Cars(cars);
+    }
+
+    public List<Car> getWinners(Cars cars) {
+        int max = 0;
+        List<Car> winners = new ArrayList<>();
+        for(Car car: cars.getCars()) {
+            if(max < car.getPosition())
+                max = car.getPosition();
+        }
+        for(Car car: cars.getCars()) {
+            if(max == car.getPosition())
+                winners.add(car);
+        }
+        return winners;
     }
 }
