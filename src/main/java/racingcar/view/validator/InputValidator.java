@@ -25,4 +25,17 @@ public class InputValidator {
     public static boolean isInvalidLength(String[] carNames) {
         return Arrays.stream(carNames).anyMatch(carName -> carName.length() > NAME_LENGTH_MAX);
     }
+
+    public static boolean isInteger(String tryNumber) {
+        try {
+            Integer.parseInt(tryNumber);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public static boolean isBiggerThanOne(int tryNumber) {
+        return tryNumber >= 1;
+    }
 }

@@ -9,9 +9,15 @@ import java.util.List;
 
 public class GameController {
     private Cars cars;
+    private int tryNumber;
 
     public void play() {
         cars = createCars();
+        tryNumber = getTryNumber();
+    }
+
+    private int getTryNumber() {
+        return InputView.requestTryNumber();
     }
 
     private static Cars createCars() {

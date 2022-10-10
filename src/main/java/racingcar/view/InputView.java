@@ -26,9 +26,19 @@ public class InputView {
         }
     }
 
-//    public static int requestTryNumber() {
-//        System.out.println(REQUEST_TRY_NUMBER);
-//        int tryNumber = Integer.parseInt(Console.readLine());
-//        validate
-//    }
+    public static int requestTryNumber() {
+        System.out.println(REQUEST_TRY_NUMBER);
+        String input = Console.readLine();
+        validateTryNumber(input);
+        return Integer.parseInt(input);
+    }
+
+    private static void validateTryNumber(String tryNumber) {
+        if(!InputValidator.isInteger(tryNumber)) {
+            throw new IllegalArgumentException(TRY_NUMBER_NOT_INTEGER);
+        }
+        if(!InputValidator.isBiggerThanOne(Integer.parseInt(tryNumber))) {
+            throw new IllegalArgumentException(TRY_NUMBER_SMALLER_THAN_ONE);
+        }
+    }
 }
